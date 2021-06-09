@@ -6,7 +6,8 @@ const { v4: uuidv4 } = require("uuid");
 async function crearRecipes(req, res, next) {
   try {
     const id = uuidv4();
-    const { title, type, resumen, puntos, nivel, paso } = req.body;
+    const { title, diets, resumen, puntos, nivel, paso } = req.body;
+    console.log(diets)
     const receta = await Recipe.create({
       id: id,
       title,
@@ -16,14 +17,14 @@ async function crearRecipes(req, res, next) {
       paso,
     });
 
-    const rta = await receta.addTypes(type);
+    const rta = await receta.addTypes(diets);
     res.status(200).send(rta);
   } catch (error) {
     next(error);
   }
 }
 function post(req, res, next) {
-  Recipe.findAll({ include: Type })
+  Recipe.findAll({ include: Type})
     .then((response) => {
       res.send(response);
     })
@@ -32,7 +33,7 @@ function post(req, res, next) {
 
 async function recipesAll(req, res, next) {
   //    axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}`)659135
-  const createdRecetas = Recipe.findAll({ inclide: { model: Type } });
+  const createdRecetas = Recipe.findAll({include: {model: Type}})
   // const apiRecipes= axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=81c7a6d6a35740fda5e7430d1dceb85e&addRecipeInformation=true")
   // const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=true")
   // const apiRecipes =await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=true");
@@ -61,9 +62,10 @@ async function recipesAll(req, res, next) {
             }
         })  
         const xrecetas= createdRecetasR.map(p=>{
-          p.diets = p.types.map(t=>t.name)
+          p.types = p.types.map(t=>t.name)
+          return p
         })             
-         const joinR =xrecetas.concat(rece);
+         const joinR = xrecetas.concat(rece);
                         
 Promise.all(joinR).then((response) => {
         
