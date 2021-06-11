@@ -13,12 +13,10 @@ await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&ap
         }
     }
 
-      const first = diftypes[3]
-      const last=  diftypes[78]
-      let allTypes= first.concat(last)
-     allTypes.shift()
-
-    // console.log(allTypes)
+    const first = diftypes[3]
+    const last=  diftypes[78]
+    let allTypes= first.concat(last)
+    allTypes.shift()
 
     for(let i =0; i<allTypes.length; i++){
         
