@@ -9,13 +9,13 @@ return (
         <div>
             <img src={deta.img} alt="" />
             <h4>{deta.title}</h4>
-            <p>{deta.id}</p>
-            <p>{deta.diets}</p>
-            <p>{deta.plato}</p>
-            <p>{deta.nivel}</p>
-            <p>{deta.puntos}</p>
-            <p>{deta.paso}</p>
-            <p>{deta.resumen}</p>
+            <p>id: {deta.id}</p>
+            <p>Tipo de Dieta:{deta.diets && deta.diets.map((x)=>(<li>{x}</li>))}</p>
+            <p>Tipo de Plato: {deta.plato}</p>
+            <p>Nivel Saludable: {deta.nivel}</p>
+            <p>Puntuacion: {deta.puntos}</p>
+            <p>Pasos a Seguir: {deta.paso? deta.paso : "No se ha encontrado Pasos a Seguir"}</p>
+            <p>Resumen: {deta.resumen}</p>
         </div>
         <div>
             <Link to="/home"><button onClick={()=>dispatch(cargar())}>Home</button></Link>

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { NavLink, useHistory, Link } from "react-router-dom";
-import{ ascendente, descendente, getName, mayorP, menorP, nextRece, previousRece, renderRece} from "../../actions/action"
+import{ ascendente, createdRecipe, descendente, getCreated, getName, matcheaDiets, mayorP, menorP, nextRece, previousRece, renderRece, typesDiets} from "../../actions/action"
 import { detailRece } from "../../actions/action";
 
 
@@ -10,17 +10,32 @@ const dispatch = useDispatch()
 const render= useSelector((x)=> x.render) 
 const [nombres, setNombres]= useState("")
 const history = useHistory()
-// const detail= useSelector((x)=> x.detail)
+const tipos= useSelector((x)=> x.types)
+
+let state= {
+    value:""
+}
+
 function HandleChange(e){
 setNombres(e.target.value);
 }
 function handleSubmit(e){
-dispatch(getName(nombres));
-history.push("/Busqueda")
+    dispatch(getName(nombres));
+    history.push("/Busqueda")
 }
+
 useEffect(()=>{
 dispatch(renderRece())
+dispatch(typesDiets())
+dispatch(getCreated())
+dispatch(createdRecipe())
 },[dispatch])
+
+function changeType(e){
+state.value= e.target.value
+dispatch(matcheaDiets(state.value))
+history.push("/typesMatch")
+}
 
 return (
 <div>
@@ -32,6 +47,20 @@ return (
         <button onClick={()=> dispatch(mayorP())}>MAYOR</button>
         <button onClick={()=> dispatch(menorP())}>MENOR</button>
     </div>
+    <div>
+        <Link to="/formulario">
+        <button>Crear Receta</button>
+        </Link>
+        
+    </div>
+    <select name="" id="" onChange={changeType}>
+        <option value="">Tipo de Dieta</option>
+        {
+            tipos.map((x, index)=>(
+              <option key={index}>{x.name}</option>
+            ))
+        }
+    </select>
     <div>
         <form action="" onSubmit={handleSubmit}>
             <input 
@@ -56,8 +85,8 @@ return (
             onClick={()=>dispatch(detailRece(x.id))}
              />
             </NavLink>
-            <h4>{x.title}</h4>
-            <h4>{x.diets}</h4>
+            <h3>{x.title}</h3>
+            <p>{x.diets && x.diets.map((c)=>(c + " ")) }</p>
         </div>
      ))
      }

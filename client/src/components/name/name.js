@@ -16,7 +16,7 @@ return(
                     <div>
                 <Link to="/detail"><img src={c.img} alt="" onClick={()=>dispatch(detailRece(c.id))} /></Link>  
                 <h3>{c.title}</h3>
-                <h3>{c.diets}</h3>
+                <p>{c.diets && c.diets.map((x)=>(x + " "))}</p>
                     </div>
                    
                 ))
