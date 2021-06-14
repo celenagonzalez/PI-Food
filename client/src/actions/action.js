@@ -233,8 +233,10 @@ export function matcheaDiets(elem){
 }
 export function formCrea(data){
 return function(dispatch){
-    axios.get ("http://localhost:3001/created", data)
+    axios.post(`http://localhost:3001/created`, data)
     .then((response)=>{
+        console.log("aaaaaaaaaaaaaaaaaaaaaa")
+        console.log(response.data)
         dispatch({
          type: DATA_CREATED,
         payload:response.data
@@ -242,34 +244,50 @@ return function(dispatch){
     })
 }
 }
+export function createdRecipe(){
+    return function(dispatch, getState){
+
+        let createdPost= getState().createdPost
+        let array= []
+        for(let i=0; i<createdPost.length;i++){
+            if(!!createdPost[i].id){
+            array.push({
+                id: createdPost[i].id,
+                title: createdPost[i].title,
+                resumen:createdPost[i].resumen,
+                puntos: createdPost[i].puntos,
+                nivel:createdPost[i].nivel,
+                paso: createdPost[i].paso,
+                diets: createdPost[i].types.map((t)=> t.name),
+            })
+
+            }
+        }
+        // let baseRece= createdPost.map((c)=>{
+        //     return {
+        //         id: c.id,
+        //         title: c.title,
+        //         resumen:c.resumen,
+        //         puntos: c.puntos,
+        //         nivel:c.nivel,
+        //         paso: c.paso,
+        //         diets: c.types.map((t)=> t.name),
+        //     }
+        // })
+        dispatch({
+            type: CREATED_RECIPE,
+            payload: array
+        })
+    }
+}
 export function getCreated(){
     return function(dispatch){
-        axios.get ("http://localhost:3001")
+        axios.get (`http://localhost:3001/`)
         .then(response=>{
             dispatch({
                 type: POST_CREATED,
                 payload: response.data
             })
         })   
-    }
-}
-export function createdRecipe(){
-    return function(dispatch, getState){
-        let createdPost= getState().createdPost
-        let baseRece= createdPost.map((c)=>{
-            return {
-                id: c.id,
-                title: c.title,
-                diets: c.types.map((t)=> t.name),
-                resumen:c.resumen,
-                nivel:c.nivel,
-                paso: c.paso,
-                puntos: c.puntos
-            }
-        })
-        dispatch({
-            type: CREATED_RECIPE,
-            payload: baseRece
-        })
     }
 }

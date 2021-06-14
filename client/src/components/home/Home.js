@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { NavLink, useHistory, Link } from "react-router-dom";
-import{ ascendente, createdRecipe, descendente, getCreated, getName, matcheaDiets, mayorP, menorP, nextRece, previousRece, renderRece, typesDiets} from "../../actions/action"
+import{ ascendente, createdRecipe, descendente,
+     getCreated, getName, matcheaDiets, mayorP,
+      menorP, nextRece, previousRece, renderRece,
+       typesDiets} from "../../actions/action"
 import { detailRece } from "../../actions/action";
 
 
@@ -28,7 +31,6 @@ useEffect(()=>{
 dispatch(renderRece())
 dispatch(typesDiets())
 dispatch(getCreated())
-dispatch(createdRecipe())
 },[dispatch])
 
 function changeType(e){
@@ -46,6 +48,9 @@ return (
     <div>
         <button onClick={()=> dispatch(mayorP())}>MAYOR</button>
         <button onClick={()=> dispatch(menorP())}>MENOR</button>
+    </div>
+    <div>
+        <button onClick={()=>dispatch(createdRecipe())}>Creados</button>
     </div>
     <div>
         <Link to="/formulario">
@@ -80,13 +85,13 @@ return (
      render.map((x,index)=>(
         <div key={index}>
             <NavLink to="/detail">
-            <img src={x.img} 
+            <img src={x.img? x.img : "hola"} 
             alt="recetas"
             onClick={()=>dispatch(detailRece(x.id))}
              />
             </NavLink>
             <h3>{x.title}</h3>
-            <p>{x.diets && x.diets.map((c)=>(c + " ")) }</p>
+            <p>{x.diets && x.diets.map((c)=>(c + " ")) || x.types.map(m=> m.name + " ") }</p>
         </div>
      ))
      }

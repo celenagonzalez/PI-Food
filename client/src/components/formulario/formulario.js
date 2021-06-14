@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { formCrea, renderRece } from "../../actions/action";
+import { createdRecipe, formCrea, renderRece } from "../../actions/action";
 import Select from 'react-multi-select-component';
 import { useState } from "react";
 import {Link} from "react-router-dom"
@@ -10,15 +10,15 @@ function Form(){
 
     const InitialValues ={
         title:{value:"", valid:false, touched:false},
-        diets:{value:[], valid:false, touched:false},
+        diets:{value: [], valid:false, touched:false},
         nivel:{value:"", valid:false, touched:false},
         puntos:{value:"", valid:false, touched:false},
         paso:{value:"", valid:false, touched:false},
         resumen:{value:"", valid:false, touched:false},
 
     }
-    const[data, setData]= useState(InitialValues)
-    const [formValid , validamos] = useState(false)
+    const[data, setData]= useState(InitialValues);
+    const [formValid , validamos] = useState(false);
     function handleChange(e){
     let valid;
     let field;
@@ -34,6 +34,7 @@ function Form(){
     }
     else{
     valid= validateCampo(e);
+    // console.log(e)
     field={
         valid,
         value:e.target.value,
@@ -65,7 +66,7 @@ function Form(){
 const options= types.map((c)=>({label: c.name, value: c.id}))
 return (
     <div>
-        <form action="" onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <input 
             name="title"
             type="text"

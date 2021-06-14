@@ -18,7 +18,7 @@ async function crearRecipes(req, res, next) {
     });
 
     const rta = await receta.addTypes(diets);
-    res.status(200).json(rta);
+    res.status(200).send(rta);
   } catch (error) {
     next(error);
   }
@@ -78,16 +78,19 @@ Promise.all(joinR).then((response) => {
   
             return res.status(200).send(xname)
             }
-        }).catch(err => next(err))
+        })
+        // .catch(err => next(err))
     
     }).catch((err) => next(err));
   }
   async function detailRecipe(req, res, next){
     const id =req.params.id
     // axios. get(" https://api.spoonacular.com/recipes/information?apiKey=e57be4972a92421c90efc6b7b02a06d4")
-    const detailBase= axios.get("http://localhost:3001")
-    // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=false`)
+    const detailBase= axios.get(`http://localhost:3001/`)
+    // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=81c7a6d6a35740fda5e7430d1dceb85e&addRecipeInformation=false`)
     const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=false`)
+    // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=false`)
+    // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=false`)
 
     //  const detailId =await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=true");
     // const detailId= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=true")
@@ -116,16 +119,16 @@ Promise.all(joinR).then((response) => {
                   return{
                     id:c.id,
                     title: c.title,
-                    diets: c.types.map((x)=>x.name),
-                    nivel: c.nivel,
-                    puntos: c.puntos,
                     resumen: c.resumen,
-                    paso: c.paso
+                    puntos: c.puntos,
+                    nivel: c.nivel,
+                    paso: c.paso,
+                    diets: c.types.map((x)=>x.name),
                   }
                 })
-                const total = await detallebase.concat(detalles)
-                Promise.all(total).then(response=>{
-
+                const total =detallebase.concat(detalles)
+                Promise.all(total).then(async(response)=>{
+                  
                  for(let i=0; i<response.length; i++){
                     if(response[i].id == id) return res.status(200).send(response[i])
                   }

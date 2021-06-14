@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     resumen:{
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull:false
     },
     puntos:{
