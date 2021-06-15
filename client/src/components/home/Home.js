@@ -85,13 +85,13 @@ return (
      render.map((x,index)=>(
         <div key={index}>
             <NavLink to="/detail">
-            <img src={x.img? x.img : "hola"} 
+            <img src={x.img} 
             alt="recetas"
             onClick={()=>dispatch(detailRece(x.id))}
              />
             </NavLink>
             <h3>{x.title}</h3>
-            <p>{x.diets && x.diets.map((c)=>(c + " ")) || x.types.map(m=> m.name + " ") }</p>
+            <p>{x.diets && x.diets.map((c)=>(c + " "))}</p>
         </div>
      ))
      }
