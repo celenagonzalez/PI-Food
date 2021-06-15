@@ -37,25 +37,27 @@ const nine= []
 }    
 }
 export function detailRece(id){
-return function(dispatch, getState){
-    let todos= getState().todos
-    let obj = {}
-    for(let i=0; i<todos.length; i++){
-        if(!!todos[i].id === id){
-            obj= todos[i]
-        }
-    }
-    dispatch({
-        type: DETAIL_RECE,
-        payload: obj
+return function(dispatch){
+    // let todos= getState().todos
+    axios.get(`http://localhost:3001/recipes/${id}`)
+    .then(response=>{
+        dispatch({
+            type: DETAIL_RECE,
+            payload: response.data
+        })
     })
-    // axios.get(`http://localhost:3001/recipes/${id}`)
-    // .then(response=>{
-    //     dispatch({
-    //         type: DETAIL_RECE,
-    //         payload: response.data
-    //     })
+
+    // let obj = {}
+    // for(let i=0; i<todos.length; i++){
+    //     if(!!todos[i].id === id){
+    //         obj= todos[i]
+    //     }
+    // }
+    // dispatch({
+    //     type: DETAIL_RECE,
+    //     payload: obj
     // })
+
 }
 }
 export function cargar(){

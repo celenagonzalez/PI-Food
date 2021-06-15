@@ -74,9 +74,9 @@ async function recipesAll(req, res, next) {
         })             
          const joinR = xrecetas.concat(rece);
                         
-Promise.all(joinR).then( (response) => {
+       Promise.all(joinR).then( (response) => {
         let respuesta1 =  response
-        console.log(name)
+        // console.log(name)
         if(name === undefined)  return res.status(200).send(respuesta1)
           
         else if (!!name && name.length>0 ){
@@ -86,94 +86,72 @@ Promise.all(joinR).then( (response) => {
             return res.status(200).send(xname)
             }
         })
-        // .catch(err => next(err))
-    
-    }).catch((err) => next(err));
+
+  }).catch((err) => next(err));
   }
   async function detailRecipe(req, res, next){
     let  id =req.params.id
     // axios. get(" https://api.spoonacular.com/recipes/information?apiKey=e57be4972a92421c90efc6b7b02a06d4") e019feb433b5480a846ce5deca4ad551
     const detailBase= await axios.get(`http://localhost:3001/`)
-    console.log(detailBase.data)
+    // console.log(detailBase.data)
     // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=81c7a6d6a35740fda5e7430d1dceb85e&addRecipeInformation=false`)
     // const detailId = axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=false`)
     // const detailId = axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=false`)
     //  const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=false`)
-    const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=false`)
     // const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e019feb433b5480a846ce5deca4ad551&addRecipeInformation=false`)
-    console.log(detailId.data)
-    // Promise.all([detailBase, detailId])
-    // .then((response)=>{
-    //   const [detailBaseR, detailIdR] = response
-     
-    //   // console.log(detailIdR.data)
-    //     //  const detallebase = detailBaseR.data.map(async(c)=>{
-    //     //           return{
-    //     //             id:c.id,
-    //     //             title: c.title,
-    //     //             resumen: c.resumen,
-    //     //             puntos: c.puntos,
-    //     //             nivel: c.nivel,
-    //     //             paso: c.paso,
-    //     //             diets: c.types.map((x)=>x.name),
-    //     //           }
-    //     //         })
-    //     const databasex=  detailBaseR.data
-    //     console.log(databasex)
-    //   const detailApi=  detailIdR.data
-    //   console.log(detailApi)
-      
-    //   // let detalles= []
-      
-    //   //     detalles.push({
-    //   //       id: detailApi.id,
-    //   //       img:detailApi.image,
-    //   //       title:detailApi.title,
-    //   //       diets: detailApi.diets,
-    //   //       plato: detailApi.dishTypes.map((um)=> um),
-    //   //       nivel: detailApi.healthScore,
-    //   //       puntos: detailApi.spoonacularScore,
-    //   //       resumen: detailApi.summary,
-    //   //       paso:detailApi.instructions && detailApi.instructions
-    //   //     })
+    // console.log(detailId.data)
+    
+    if(id.length < 7){
+      const detailId =await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=false`)
 
-    //       // console.log(detalles)
-    //       // let database= detailBaseR.data
-    //       // let mx= []
-    //       // for(let m =0; m< database.length; m++ ){
-    //       //   mx.push({
-    //       //               id:database[m].id,
-    //       //               title: database[m].title,
-    //       //               resumen:database[m].resumen,
-    //       //               puntos: database[m].puntos,
-    //       //               nivel: database[m].nivel,
-    //       //               paso: database[m].paso,
-    //       //               diets: database[m].types.map((x)=>x.name),
-    //       //   })
-    //       // }
-     
-    //       //       let  total = mx.concat(detalles)
-    //       //       Promise.all(total).then((response)=>{
-    //       //         let info= response
-    //       //         // console.log(response)
-    //       //         console.log(id)
-    //       //       //   console.log("ooooooooooooooooooooooooooo")
-              
-    //       //         for(let i=0; i< info.length; i++){
-    //       //           console.log("mmmmmmmmmmmmmm")
-    //       //            if(info[i].id === id){
-    //       //           }
-    //       //           res.send(info[i])
-
-    //       //             // return res.status(200).send(response[i])
-    //       //          }
-                
-    //       //         // return res.status(404).send("Error Id Inexistente!")
-    //       //       })
-    //             // .catch(err => next(err))
-    //           }).catch(err => next(err))
-              
-              
+      let detailApi = detailId.data
+      var detalles= []
+      let parse = parseInt(id)
+            detalles.push({
+              id: detailApi.id,
+              img:detailApi.image,
+              title:detailApi.title,
+              diets: detailApi.diets,
+              plato: detailApi.dishTypes.map((um)=> um),
+              nivel: detailApi.healthScore,
+              puntos: detailApi.spoonacularScore,
+              resumen: detailApi.summary,
+              paso:detailApi.instructions && detailApi.instructions
+            })
+            for(let i=0; i<detalles.length; i++){
+              if(detalles[i].id === parse){
+                res.status(200).send(detalles[i])
+              }
+              else{
+                res.satus(404).send("Error ID INEXISTENTE ")
+              }
+            }
+            // console.log(detalles)
+          }
+    // else if(id.length > 20){ 
+        let database= detailBase.data
+        var mx=[]
+              for(let m =0; m< database.length; m++ ){
+                mx.push({
+                id:database[m].id,
+                title: database[m].title,
+                resumen:database[m].resumen,
+                puntos: database[m].puntos,
+                nivel: database[m].nivel,
+                paso: database[m].paso,
+                diets: database[m].types.map((x)=>x.name),
+                })
+              }
+          if(!!mx){
+            for(let i=0; i< mx.length; i++){
+              if(mx[i].id === id){
+                res.status(200).send(mx[i])
+              }
+              else{
+                res.satus(404).send("Error ID INEXISTENTE ")
+              }
+            }
+          }   
             }
 module.exports = {
   recipesAll,

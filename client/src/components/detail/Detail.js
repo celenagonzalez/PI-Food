@@ -11,7 +11,7 @@ return (
             <h4>{deta.title}</h4>
             <p>id: {deta.id}</p>
             <p>Tipo de Dieta:{deta.diets && deta.diets.map((x)=>(<li>{x}</li>)) }</p>
-            <p>Tipo de Plato: {deta.plato}</p>
+            <p>Tipo de Plato: {deta.plato? deta.plato : ""}</p>
             <p>Nivel Saludable: {deta.nivel}</p>
             <p>Puntuacion: {deta.puntos}</p>
             <p>Pasos a Seguir: {deta.paso? deta.paso : "No se ha encontrado Pasos a Seguir"}</p>
