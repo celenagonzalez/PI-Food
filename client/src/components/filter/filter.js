@@ -5,13 +5,13 @@ function FilterTypes(){
     const tDiets= useSelector((x)=> x.filter)
     const dispatch= useDispatch()
     return(
-        <div>
+        <div className="columnas">
             {
                 tDiets.map((c, index)=>(
-                    <div key={index}>
-                        <Link to="/detail"><img src={c.img} alt="" onClick={()=>dispatch(detailRece(c.id))} /></Link>
-                       <h4>{c.title}</h4>
-                       <p>{c.diets && c.diets.map((x)=> <p>{x + " "}</p>)}</p> 
+                    <div key={index} className="card">
+                        <Link to="/detail"><img src={c.img} alt="" className= "img" onClick={()=>dispatch(detailRece(c.id))} /></Link>
+                       <h4 className="title">{c.title}</h4>
+                       <p className="text">{c.diets && c.diets.map((x)=> <p>{x + " "}</p>)}</p> 
                     </div>
                 ))
             }

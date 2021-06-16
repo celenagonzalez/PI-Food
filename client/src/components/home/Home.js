@@ -6,6 +6,7 @@ import{ ascendente, createdRecipe, descendente,
       menorP, nextRece, previousRece, renderRece,
        typesDiets} from "../../actions/action"
 import { detailRece } from "../../actions/action";
+import "./home.css";
 
 
 function RecetasHome(){
@@ -40,25 +41,20 @@ history.push("/typesMatch")
 }
 
 return (
-<div>
-    <div>
-        <button onClick={()=>dispatch(ascendente())}>ASC</button>
-        <button onClick={()=>dispatch(descendente())}>DES</button>
-    </div>
-    <div>
-        <button onClick={()=> dispatch(mayorP())}>MAYOR</button>
-        <button onClick={()=> dispatch(menorP())}>MENOR</button>
-    </div>
-    <div>
-        <button onClick={()=>dispatch(createdRecipe())}>Creados</button>
-    </div>
-    <div>
+<div className="home_contenedor">
+    <div className="contenedor_botones">
+    <div className="b_asc">
+        <button className="but" onClick={()=>dispatch(ascendente())}>Ascendente</button>
+        <button className="but" onClick={()=>dispatch(descendente())}>Descendente</button>
+        <button className="but" onClick={()=> dispatch(mayorP())}>Mayor Puntuación</button>
+        <button className="but" onClick={()=> dispatch(menorP())}>Menor Puntuación</button>
+        <button className="but" onClick={()=>dispatch(createdRecipe())}>Creados</button>
+        {/* <div> */}
         <Link to="/formulario">
-        <button>Crear Receta</button>
+        <button className="but1">Crear Receta</button>
         </Link>
-        
-    </div>
-    <select name="" id="" onChange={changeType}>
+        {/* </div> */}
+        <select className="but1" onChange={changeType}>
         <option value="">Tipo de Dieta</option>
         {
             tipos.map((x, index)=>(
@@ -66,39 +62,43 @@ return (
             ))
         }
     </select>
-    <div>
-        <form action="" onSubmit={handleSubmit}>
+    </div>
+    <div className="contenedor_buscador">
+        <form action="" onSubmit={handleSubmit} className="buscador">
             <input 
+            className="input_home"
             type="text"
             autoComplete="off"
             placeholder="Ingrese Titulo de Receta"
             value={nombres}
             onChange={HandleChange}
              />
-             <button type="submit">
+             <button type="submit" className="boton_home_name">
                 Buscar
              </button>
         </form>
     </div>
-<ul>
+    </div>
+<ul className="columnas">
     {
      render.map((x,index)=>(
-        <div key={index}>
+        <div key={index} className="card">
             <NavLink to="/detail">
             <img src={x.img} 
             alt="recetas"
             onClick={()=>dispatch(detailRece(x.id))}
+            className="img"
              />
             </NavLink>
-            <h3>{x.title}</h3>
-            <p>{x.diets && x.diets.map((c)=>(c + " "))}</p>
+            <h3 className="title">{x.title}</h3>
+            <p className="text">{x.diets && x.diets.map((c)=>(c + " "))}</p>
         </div>
      ))
      }
 </ul>
-<div>
-    <button onClick={()=>dispatch(previousRece())}>Anterior</button>
-    <button onClick={()=>dispatch(nextRece())}>Siguiente</button>
+<div className="botones_order">
+    <button className="ant" onClick={()=>dispatch(previousRece())}>Anterior</button>
+    <button className="sig" onClick={()=>dispatch(nextRece())}>Siguiente</button>
 </div>
 </div>
 )

@@ -6,23 +6,23 @@ function Name(){
 const name= useSelector((x)=> x.names)
 const dispatch= useDispatch()
 return(
-    <div>
+    <div className="home_contenedor">
         <div>
             <h1>Resultado de Busqueda</h1>
         </div>
         <div>
             {
                 name.map((c)=>( 
-                    <div>
-                <Link to="/detail"><img src={c.img} alt="" onClick={()=>dispatch(detailRece(c.id))} /></Link>  
-                <h3>{c.title}</h3>
-                <p>{c.diets && c.diets.map((x)=>(x + " "))}</p>
+                    <div className="card">
+                <Link to="/detail"><img src={c.img} alt="" className="img" onClick={()=>dispatch(detailRece(c.id))} /></Link>  
+                <h3 className="title">{c.title}</h3>
+                <p className="text">{c.diets && c.diets.map((x)=>(x + " "))}</p>
                     </div>
                    
                 ))
             }
             <div>
-                <Link to="/home"><button onClick={()=>dispatch(cargar())}>Home</button></Link>
+                <Link to="/home"><button className="sig" onClick={()=>dispatch(cargar())}>Home</button></Link>
             </div>
         </div>
     </div>

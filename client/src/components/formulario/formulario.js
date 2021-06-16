@@ -3,6 +3,7 @@ import { formCrea, renderRece } from "../../actions/action";
 import Select from 'react-multi-select-component';
 import { useState } from "react";
 import {Link} from "react-router-dom"
+import "./formulario.css"
 
 function Form(){
     const dispatch= useDispatch()
@@ -65,9 +66,11 @@ function Form(){
     }
 const options= types.map((c)=>({label: c.name, value: c.id}))
 return (
-    <div>
-        <form  onSubmit={handleSubmit}>
+    <div className="contenedor_formulario"> 
+        <form className="box_form" onSubmit={handleSubmit}>
+            <h1 className="titulo_formulario">Crea tu Propia Receta!</h1>
             <input 
+            className="input"
             name="title"
             type="text"
             autoComplete="off"
@@ -78,12 +81,14 @@ return (
               {(data.title.touched && !data.title.valid) ?<span>El campo debe tener al menos 10 caracteres</span> : ''}
             <label for="type">Elige Tipos de Dieta</label>
               <Select
+              className="input"
                  options={options}
                  value={data.diets.value}
                  onChange={handleChange}
 
                  />
-            <input 
+            <input
+            className="input"
             name="nivel"
             type="number"
             autoComplete="off"
@@ -93,6 +98,7 @@ return (
             />
              {(data.nivel.touched && !data.nivel.valid) ?<span>El campo debe contener un numero  de 0 a 100</span> : ''}
             <input 
+            className="input"
             name="puntos"
             type="text"
             autoComplete="off"
@@ -102,6 +108,7 @@ return (
             />
              {(data.puntos.touched && !data.puntos.valid) ?<span>El campo debe contener un numero  de 0 a 100</span> : ''}
             <input 
+            className="input"
             name="paso" 
             type="text"
             autoComplete="off"
@@ -111,6 +118,7 @@ return (
             />
              {(data.paso.touched && !data.paso.valid) ?<span>El campo debe contener al menos 80 caracteres</span> : ''}
             <input 
+            className="input"
             name="resumen"
             type="text"
             autoComplete="off"
@@ -119,10 +127,10 @@ return (
             onChange={handleChange}
             />
             {(data.resumen.touched && !data.resumen.valid) ?<span>El campo debe contener al menos 80 caracteres</span> : ''}
-            <button disabled={!formValid} type="submit" onClick={()=>dispatch(renderRece())}>Agregar</button>
+            <button className="boton_formulario" disabled={!formValid} type="submit" onClick={()=>dispatch(renderRece())}>Agregar</button>
         </form>
            <div>
-           <Link to="/home"><button >Volver</button></Link>
+           <Link to="/home"><button className="volver_formulario">Volver</button></Link>
            </div> 
     </div>
 )

@@ -1,0 +1,111 @@
+.columnas{
+/* background-color: rgba(0, 0, 255, 0.377); */
+column-count: 3;
+margin: auto;
+justify-content: center;
+padding-top: 30px;
+width: 95%;
+
+/* padding: 30px; */
+
+}
+.home_contenedor{
+background-image: url("../../imagen/food.jpg") ;
+}
+.card{
+background-color: rgba(225, 255, 92, 0.493);
+border-radius: 40px;
+width: 350px;
+margin-bottom: 30px;
+height: 400px;
+text-align: center;
+border: 1px solid rgba(225, 255, 92, 0.959);
+}
+.img{
+max-width:100%;   
+border-radius: 40px;
+padding: 15px;
+}
+.title{
+margin: auto;
+margin-left: 8px;  
+text-align: center;
+/* max-width: 70%;   */
+}
+.text{
+margin: auto;
+max-width: 100%;
+padding: 18px;
+}
+/* .contenedor_botones{
+background-color: rosybrown;
+
+} */
+/* .contenedor_buscador{
+background-color: skyblue;
+} */
+.input_home{
+width: 350px;
+border: 3px solid  rgba(225, 255, 92, 0.959);
+/* background-color: rgba(105, 90, 205, 0.178); */
+border-radius: 10px;
+}
+.buscador{
+max-width: 100%;
+border-radius: 20px;
+background-color: rgba(0, 0, 0, 0.726);
+width: 426px;
+padding: 3px;
+}
+.boton_home_name{
+    margin-left: 5px;
+    border: 1px solid rgba(225, 255, 92, 0.959);
+    border-radius:6px;
+    background-color: rgba(0, 0, 0, 0.726);
+    color: blanchedalmond;
+
+ }
+ 
+ .b_asc{
+/* background-color: cornsilk; */
+padding-top: 15px;
+ }
+ /* .b_punt{
+background-color: cyan;
+ } */
+ .but{
+
+margin-right:3px;
+background-color: rgba(0, 0, 0, 0.726);
+border-radius: 8px;
+margin-bottom: 10px;
+color:white;
+border: 1px solid rgba(225, 255, 92, 0.959);
+ }
+ .but1{
+     margin-left: 320px;
+     background-color: rgba(0, 0, 0, 0.726);
+     height: 23px;
+     border-radius: 8px;
+     color: white;
+     border: 2px solid rgba(225, 255, 92, 0.959);
+ }
+ .botones_order{
+     /* background-color: yellow; */
+     padding-left: 670px;
+ }
+ .ant{
+    background-color: rgba(0, 0, 0, 0.726);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: white;
+    border: 2px solid rgba(225, 255, 92, 0.959);   
+ }
+ .sig{
+    background-color: rgba(0, 0, 0, 0.726);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: white;    
+    padding-left: 5px;
+    border: 2px solid rgba(225, 255, 92, 0.959);
+ }
