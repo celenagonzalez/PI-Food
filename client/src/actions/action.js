@@ -43,7 +43,7 @@ return function(dispatch){
     .then(response=>{
         dispatch({
             type: DETAIL_RECE,
-            payload: response.data
+            payload: response.data[0]
         })
     })
 
