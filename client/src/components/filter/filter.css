@@ -1,0 +1,40 @@
+.cajaA{
+    background-color: yellow;
+}
+.columnas_filter{
+background-color: violet;
+column-count: 5;
+margin: auto;
+justify-content: center;
+padding: 50px;
+padding-right: 50px;
+/* padding-left: 30px; */
+}
+.card_filter{
+    background-color: wheat;
+    border-radius: 50px;
+    width: 250px;
+    margin-bottom: 30px;
+    height: 500px;
+    
+    text-align: center;
+    border: 2px solid rgba(255, 215, 104, 0.788);
+   
+}
+.img_filter{
+    max-width:86%;   
+border-radius: 20px;
+margin-top: 20px;    
+}
+.title_filter{
+/* background-color: teal; */
+ /* width: 90%;    */
+height: 60px;
+justify-content: center;
+}
+.text_filter{
+    /* background-color: teal; */
+    align-items: center;
+/* width: 40px; */
+height: 40px;
+}

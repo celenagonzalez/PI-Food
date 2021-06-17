@@ -12,7 +12,8 @@ variable: 9,
 names: [],
 types:[],
 filter:[],
-createdPost:[]
+createdPost:[],
+response:[]
 }
 export const rootReducer = (state= initialState, action) =>{
 switch(action.type){
@@ -40,7 +41,8 @@ case NEXT_RECE:{
     return{
         ...state,
         render: action.payload.todos,
-        variable: action.payload.variable
+        variable: action.payload.variable,
+        names: action.payload.names
     }
 }
 case PREV_RECE:{
@@ -55,7 +57,7 @@ case GET_NAME:{
         ...state,
         names: action.payload
     }
-}
+} 
 case ASCENDENTE:{
     return{
         ...state,

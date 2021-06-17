@@ -15,6 +15,7 @@ export const DATA_CREATED= "DATA_CREATED"
 export const POST_CREATED="POST_CREATED"
 export const CREATED_RECIPE="CREATED_RECIPE"
 
+
 export function renderRece(){
 return function (dispatch, getState){
 let todos = getState().todos;
@@ -95,7 +96,7 @@ return function (dispatch, getState){
     let variable= getState().variable;   
     let todos= getState().todos;
     let previous=[]
-    if(variable > 9){
+    if(variable > 9 ){
         for(let i= variable -18; i< variable - 9; i++){
             previous.push(todos[i])
         }
@@ -111,15 +112,31 @@ return function (dispatch, getState){
 }
 export function getName(name){
 return function(dispatch){
- axios.get(`http://localhost:3001/recipes?name=${name}`)    
- .then(response=>{
-     dispatch({
-         type: GET_NAME,
-         payload: response.data
+axios.get(`http://localhost:3001/recipes?name=${name}`)    
+    .then(response=>{
+      let nombres= []
+      let rta= response.data
+      if(rta.length > 9)
+        for(let i= 0; i< 9; i++){
+            console.log(rta[i])
+         nombres.push(rta[i])
+        }else{
+            if(rta.length< 9){
+             for(let m=0; m< rta.length; m++){
+                 nombres.push(rta[m])
+             }
+            }
+        }
+    
+         dispatch({
+             type: GET_NAME,
+             payload: nombres
+         })
      })
- })
+   
 }
 }
+
 export function ascendente(){
     return function(dispatch, getState){
       let todos= getState().todos
