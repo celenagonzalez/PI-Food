@@ -1,12 +1,5 @@
 .card_d{
-/* background-color: tomato; */
 text-align: center;
-/* display: flex; */
-/* width: 60%; */
-/* justify-content: center; */
-/* padding-left: 30px; */
-/* padding-right: 40px; */
-/* padding: 100px; */
 }
 /* .div__uno{
 background-color: tomato;
@@ -25,14 +18,17 @@ max-width:400px;
     display: flexbox;
     margin: auto;
     align-items: center;
-    background-color: rgba(153, 205, 50, 0.541);
-    width: 980px;
-    border: 10px solid  rgba(153, 205, 50, 0.705);;
+    background-color: rgba(255, 253, 131, 0.288);
+    /* height: 1000px; */
+    width: 900px;
+    border: 15px solid  rgba(197, 75, 45, 0.705);;
 }
 .p{
     display: flexbox;
     margin: auto;
-    width: 40%;
+    width: 80%;
+
+    /* height: 100%; */
     /* background-color: yellowgreen; */
 }
 .boton_detail{

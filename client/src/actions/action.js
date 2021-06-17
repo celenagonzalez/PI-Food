@@ -48,17 +48,6 @@ return function(dispatch){
         })
     })
 
-    // let obj = {}
-    // for(let i=0; i<todos.length; i++){
-    //     if(!!todos[i].id === id){
-    //         obj= todos[i]
-    //     }
-    // }
-    // dispatch({
-    //     type: DETAIL_RECE,
-    //     payload: obj
-    // })
-
 }
 }
 export function cargar(){
@@ -293,17 +282,6 @@ export function createdRecipe(){
 
             }
         }
-        // let baseRece= createdPost.map((c)=>{
-        //     return {
-        //         id: c.id,
-        //         title: c.title,
-        //         resumen:c.resumen,
-        //         puntos: c.puntos,
-        //         nivel:c.nivel,
-        //         paso: c.paso,
-        //         diets: c.types.map((t)=> t.name),
-        //     }
-        // })
         dispatch({
             type: CREATED_RECIPE,
             payload: array

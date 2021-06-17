@@ -7,6 +7,9 @@ function FilterTypes(){
     const dispatch= useDispatch()
     return(
         <div className="cajaA">
+            <div className="div_caja">
+                <h1 className="letras_filter">Resultado de Busqueda</h1>
+            </div>
         <div className="columnas_filter">
             {
                 tDiets.map((c, index)=>(
@@ -18,7 +21,7 @@ function FilterTypes(){
                 ))
             }
             <div>
-                <Link to="/home"><button onClick={()=>dispatch(cargar())}>HOME</button></Link>
+                <Link to="/home"><button className="boton_filter" onClick={()=>dispatch(cargar())}>HOME</button></Link>
             </div>
         </div>
         </div>

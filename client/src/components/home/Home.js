@@ -9,6 +9,7 @@ import { detailRece } from "../../actions/action";
 import "./home.css";
 
 
+
 function RecetasHome(){
 const dispatch = useDispatch()        
 const render= useSelector((x)=> x.render) 
@@ -85,7 +86,7 @@ return (
         <div key={index} className="card">
             <NavLink to="/detail">
             <img src={x.img} 
-            alt="recetas"
+            alt="Tu receta"
             onClick={()=>dispatch(detailRece(x.id))}
             className="img"
              />

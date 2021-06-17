@@ -1,0 +1,26 @@
+.page_page{
+/* background-color: tomato; */
+margin: auto;
+height: 100vh;
+/* padding-top: 470px; */
+/* padding-left: 520px; */
+width: 30%;
+
+
+}
+.boton_page{
+margin-top: 470px;
+font-size: 50px;
+font-family:'Courier New', Courier, monospace ;
+font: cursive;
+border-color: rgba(255, 255, 255, 0);
+background-color: rgba(255, 254, 255, 0);
+color: rgba(75, 133, 133, 0.733);
+}
+.ingresa{
+    /* background-color: teal; */
+    background-image: url("../../imagen/ingresa.jpg");
+    background-size:cover;
+    height: 110vh;
+    width: 100vw;
+}

@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const axios = require("axios");
 const { API_KEY } = process.env;
 const { Recipe, Type } = require("../db");
@@ -40,11 +40,11 @@ async function recipesAll(req, res, next) {
 // e019feb433b5480a846ce5deca4ad551
 // 264b13bbe1f14bfba40712c776738835
   const createdRecetas = await Recipe.findAll({include: {model: Type}})
-  const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=true")
+  // const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=true")
   // const apiRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=true`)
   // const apiRecipes = await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=true");
   // const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=true")
-  // const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e019feb433b5480a846ce5deca4ad551&addRecipeInformation=true")
+  const apiRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
  try {
    const { name } = req.query;
    const rece = apiRecipes.data.results.map((x)=>{
@@ -97,9 +97,9 @@ async function recipesAll(req, res, next) {
       
       if(id.length < 7){
         // const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=false`)
-        const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=false`)
+        // const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=264b13bbe1f14bfba40712c776738835&addRecipeInformation=false`)
         // const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=false`)
-        // const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e019feb433b5480a846ce5deca4ad551&addRecipeInformation=false`)
+        const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&addRecipeInformation=false`)
         // const detailId = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=false`)
   
         let detailApi = detailId.data
