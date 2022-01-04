@@ -15,12 +15,14 @@ export const DATA_CREATED= "DATA_CREATED"
 export const POST_CREATED="POST_CREATED"
 export const CREATED_RECIPE="CREATED_RECIPE"
 
+export const URL = "https://food-henry-cele.herokuapp.com/"
+
 
 export function renderRece(){
 return function (dispatch, getState){
 let todos = getState().todos;
 const nine= []
- axios.get ("http://localhost:3001/recipes")
+ axios.get (`${URL}recipes`)
  .then(response=>{
      todos= response.data
     //  console.log(todos)
