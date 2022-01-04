@@ -15,14 +15,12 @@ export const DATA_CREATED= "DATA_CREATED"
 export const POST_CREATED="POST_CREATED"
 export const CREATED_RECIPE="CREATED_RECIPE"
 
-export const URL = "https://food-henry-cele.herokuapp.com/"
-
 
 export function renderRece(){
 return function (dispatch, getState){
 let todos = getState().todos;
 const nine= []
- axios.get (`${URL}recipes`)
+ axios.get ("/recipes")
  .then(response=>{
      todos= response.data
     //  console.log(todos)
@@ -42,7 +40,7 @@ const nine= []
 export function detailRece(id){
 return function(dispatch){
     // let todos= getState().todos
-    axios.get(`http://localhost:3001/recipes/${id}`)
+    axios.get(`/recipes/${id}`)
     .then(response=>{
         dispatch({
             type: DETAIL_RECE,
@@ -103,7 +101,7 @@ return function (dispatch, getState){
 }
 export function getName(name){
 return function(dispatch){
-axios.get(`http://localhost:3001/recipes?name=${name}`)    
+axios.get(`/recipes?name=${name}`)    
     .then(response=>{
       let nombres= []
       let rta= response.data
@@ -222,7 +220,7 @@ export function menorP(){
 }
 export function typesDiets(){
     return function (dispatch){
-        axios.get ("http://localhost:3001/types")
+        axios.get ("/types")
         .then((response)=>{
             let  res1= response.data
             console.log(res1)
@@ -254,7 +252,7 @@ export function matcheaDiets(elem){
 }
 export function formCrea(data){
 return function(dispatch){
-    axios.post(`http://localhost:3001/created`, data)
+    axios.post(`/created`, data)
     .then((response)=>{
         console.log("aaaaaaaaaaaaaaaaaaaaaa")
         console.log(response.data)
@@ -292,7 +290,7 @@ export function createdRecipe(){
 }
 export function getCreated(){
     return function(dispatch){
-        axios.get (`http://localhost:3001/`)
+        axios.get (`/`)
         .then(response=>{
             dispatch({
                 type: POST_CREATED,
