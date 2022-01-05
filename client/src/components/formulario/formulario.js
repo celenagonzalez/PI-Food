@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { formCrea, renderRece } from "../../actions/action";
-import Select from 'react-multi-select-component';
+import { Select } from 'react-multi-select-component';
 import { useState } from "react";
 import {Link} from "react-router-dom"
 import "./formulario.css"
