@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { formCrea, renderRece } from "../../actions/action";
-import { Select } from 'react-multi-select-component';
+import { MultiSelect } from 'react-multi-select-component';
 import { useState } from "react";
 import {Link} from "react-router-dom"
 import "./formulario.css"
@@ -80,7 +80,7 @@ return (
              />
               {(data.title.touched && !data.title.valid) ?<span>El campo debe tener al menos 10 caracteres</span> : ''}
             <label for="type">Elige Tipos de Dieta</label>
-              <Select
+              <MultiSelect
               className="input"
                  options={options}
                  value={data.diets.value}
