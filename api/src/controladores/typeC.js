@@ -1,7 +1,8 @@
 require('dotenv').config();
 const axios= require ("axios")
 const{Type} = require("../db")
-const { API_KEY } = process.env;
+// const { API_KEY } = process.env;
+const API_KEY = 'e57be4972a92421c90efc6b7b02a06d4'
 async function typesRecipes( req, res, next){
 
 // await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=true`)

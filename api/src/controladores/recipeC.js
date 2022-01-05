@@ -1,9 +1,10 @@
 require('dotenv').config();
 const axios = require("axios");
-const { API_KEY } = process.env;
+// const { API_KEY } = process.env;
 const { Recipe, Type } = require("../db");
 const { v4: uuidv4 } = require("uuid");
 
+const API_KEY = 'e57be4972a92421c90efc6b7b02a06d4'
 async function crearRecipes(req, res, next) {
   try {
     const id = uuidv4();
@@ -44,7 +45,7 @@ async function recipesAll(req, res, next) {
   // const apiRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=00dd5adf2bbc4e7bb3360773ad54bdfc&addRecipeInformation=true`)
   // const apiRecipes = await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=true");
   // const apiRecipes= await axios.get("https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=846a154ca61d4b76a1ebe7687559f821&addRecipeInformation=true")
-  const apiRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=e57be4972a92421c90efc6b7b02a06d4&addRecipeInformation=true`)
+  const apiRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
  try {
    const { name } = req.query;
    const rece = apiRecipes.data.results.map((x)=>{
