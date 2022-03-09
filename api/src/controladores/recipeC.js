@@ -4,7 +4,7 @@ const axios = require("axios");
 const { Recipe, Type } = require("../db");
 const { v4: uuidv4 } = require("uuid");
 
-const API_KEY = 'e57be4972a92421c90efc6b7b02a06d4'
+const API_KEY = '846a154ca61d4b76a1ebe7687559f821'
 async function crearRecipes(req, res, next) {
   try {
     const id = uuidv4();
