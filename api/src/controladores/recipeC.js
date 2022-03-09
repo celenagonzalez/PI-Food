@@ -8,7 +8,7 @@ const API_KEY = 'e57be4972a92421c90efc6b7b02a06d4'
 async function crearRecipes(req, res, next) {
   try {
     const id = uuidv4();
-    const { title, diets, resumen, puntos, nivel, paso } = req.body;
+    const { title, diets, resumen, puntos, nivel, paso, image } = req.body;
     console.log(diets)
     const receta = await Recipe.create({
       id: id,
@@ -17,6 +17,7 @@ async function crearRecipes(req, res, next) {
       puntos,
       nivel,
       paso,
+      image,
     });
 
     const rta = await receta.addTypes(diets);
@@ -52,7 +53,7 @@ async function recipesAll(req, res, next) {
            return {
                id: x.id,
                title: x.title,
-               img: x.image,
+               image: x.image,
                diets: x.diets.map((x) => x),
                puntos: x.spoonacularScore,
                plato: x.dishTypes && x.dishTypes.map((m)=> m),
@@ -65,6 +66,7 @@ async function recipesAll(req, res, next) {
          const xrecetas=createdRecetas.map((m)=>{
           return{
             id: m.id,
+            image: m.image,
             title: m.title,
             resumne: m.resumen,
             puntos: m.puntos,
@@ -109,7 +111,7 @@ async function recipesAll(req, res, next) {
         let parse = parseInt(id)
               detalles.push({
                 id: detailApi.id,
-                img:detailApi.image,
+                image:detailApi.image,
                 title:detailApi.title,
                 diets: detailApi.diets,
                 plato: detailApi.dishTypes.map((um)=> um),
@@ -134,6 +136,7 @@ async function recipesAll(req, res, next) {
                 for(let m =0; m< database.length; m++ ){
                   mx.push({
                   id:database[m].id,
+                  image: database[m].image,
                   title: database[m].title,
                   resumen:database[m].resumen,
                   puntos: database[m].puntos,
