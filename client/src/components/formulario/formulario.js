@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useDispatch, useSelector } from "react-redux";
 import { formCrea, renderRece } from "../../actions/action";
 import { MultiSelect } from 'react-multi-select-component';
@@ -8,7 +9,6 @@ import "./formulario.css"
 function Form(){
     const dispatch= useDispatch()
     const types= useSelector((x)=> x.types)
-
     const InitialValues ={
         title:{value:"", valid:false, touched:false},
         diets:{value: [], valid:false, touched:false},
@@ -16,9 +16,9 @@ function Form(){
         puntos:{value:"", valid:false, touched:false},
         paso:{value:"", valid:false, touched:false},
         resumen:{value:"", valid:false, touched:false},
-
     }
     const[data, setData]= useState(InitialValues);
+    const [img, setImg] = useState("")
     const [formValid , validamos] = useState(false);
     function handleChange(e){
     let valid;
@@ -57,13 +57,25 @@ function Form(){
         nivel: data.nivel.value,
         puntos: data.puntos.value,
         paso: data.paso.value,
-        resumen: data.resumen.value
+        resumen: data.resumen.value,
+        image: img
     }
+    console.log(mydata, '////// MI DATA')
     e.preventDefault()
     dispatch(formCrea(mydata))
     setData(InitialValues)
+    setImg("")
     return alert("Su Receta ha sido creada con Exito!!")
     }
+
+    const convertToBase64 = e => {
+        const file = e.target.files[0]
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = () => {
+          setImg(reader.result)
+	};
+}
 const options= types.map((c)=>({label: c.name, value: c.id}))
 return (
     <div className="contenedor_formulario"> 
@@ -127,6 +139,12 @@ return (
             onChange={handleChange}
             />
             {(data.resumen.touched && !data.resumen.valid) ?<span>El campo debe contener al menos 80 caracteres</span> : ''}
+            <img src={img} alt="preview" style={{ width: '100%', height: '100%', maxWidth: '110px', maxHeight: '110px' }}/>
+            <input
+			name='image'
+			type='file'
+			onChange={convertToBase64}
+			/>
             <button className="boton_formulario" disabled={!formValid} type="submit" onClick={()=>dispatch(renderRece())}>Agregar</button>
         </form>
            <div>

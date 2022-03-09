@@ -11,7 +11,7 @@ return (
             <h1>Detalles de Receta</h1>
         </div>
         <div className="card_d">
-            <img className="gimgg" src={deta.img} alt="" />
+            <img className="gimgg" src={deta.image} alt="" />
             <h4 className="title_d">{deta.title}</h4>
             <p className="p">id: {deta.id}</p>
             <p className="p"> <h5>Tipo de Dieta:</h5> {deta.diets && deta.diets.map((x)=>(<li>{x}</li>)) }</p>

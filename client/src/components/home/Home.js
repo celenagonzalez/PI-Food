@@ -80,12 +80,12 @@ return (
         </form>
     </div>
     </div>
-<ul className="columnas">
+<div className="columnas">
     {
      render.map((x,index)=>(
         <div key={index} className="card">
             <NavLink to="/detail">
-            <img src={x.img} 
+            <img src={x.image} 
             alt="Tu receta"
             onClick={()=>dispatch(detailRece(x.id))}
             className="img"
@@ -96,7 +96,7 @@ return (
         </div>
      ))
      }
-</ul>
+</div>
 <div className="botones_order">
     <button className="ant" onClick={()=>dispatch(previousRece())}>Anterior</button>
     <button className="sig" onClick={()=>dispatch(nextRece())}>Siguiente</button>

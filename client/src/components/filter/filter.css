@@ -1,32 +1,28 @@
 .cajaA{
-background-image: url("../../imagen/frutas.jpeg");
-/* background-size: cover; */
+text-align: center;
+align-content: center;
+margin: auto;
 }
-/* .div_caja{
-    background-color:red;
-} */
 .letras_filter{
 text-align: center;
 font-style: oblique;
-margin-top: -10px;
 color: rgb(243, 241, 237);
-padding-left: 200px;
+padding: 30px;
+font-size: 50px;
 }
 .columnas_filter{
-/* background-color: violet; */
-column-count: 5;
-margin: auto;
-justify-content: center;
-padding: 50px;
-padding-right: 50px;
-/* padding-left: 30px; */
+columns: 5;
+display: grid;
+grid-template-columns: 20% 20% 20% 20% 20%;
+grid-row-gap: 10px;
+margin-left: 5%;
 }
 .card_filter{
-    background-color: rgba(255, 225, 93, 0.746);
+    background-color: rgba(7, 6, 4, 0.746);
     border-radius: 50px;
     width: 250px;
     margin-bottom: 30px;
-    height: 500px;
+    height: 400px;
     
     text-align: center;
     border: 2px solid rgba(255, 215, 104, 0.801);
@@ -38,16 +34,20 @@ border-radius: 20px;
 margin-top: 20px;    
 }
 .title_filter{
-/* background-color: teal; */
- /* width: 90%;    */
-height: 60px;
+padding: 10px;
+margin: auto;
+ width: 90%;   
+height: 75px;
 justify-content: center;
+color:rgba(255, 215, 104, 0.801);
 }
 .text_filter{
-    /* background-color: teal; */
-    align-items: center;
-/* width: 40px; */
-height: 40px;
+    text-align: center;
+    margin: auto;
+    align-self: center;
+    width: 90%;
+    justify-content: center;
+    color: aliceblue;
 }
 .boton_filter{
     background-color: rgba(255, 225, 93, 0.931);

@@ -1,43 +1,23 @@
 .contenedor_name{
-    /* background-color: rgb(255, 255, 255); */
-    background-image: url("../../imagen/f3.jpg");
-    background-size: cover;
-    margin: auto;
-    /* max-width: 3000px; */
-    /* height: 90vh; */
-    /* width: 100vw; */
-    /* column-count: 7; */
-    /* justify-content:c ; */
-/* margin: auto; */
-/* justify-content: center; */
-/* padding: 20px; */
-/* padding-top: 30px;
- */
-/* padding-left: 100px; */
-/* width: 95%; */
-/* max-width: 100%; */
+text-align: center;
+width: 80%;
+margin: auto;
+justify-content: center;
+align-items: center;
 }
-/* .contenedor_titulo_name{
-background-color: violet;
-} */
 .letras_titulo{
 text-align: center;
 color: white;
 font-style: oblique;
-margin-top: -10px;
-/* font: ; */
-/* border: 1px white solid; */
+padding: 25px;
 }
 .imagen_name{
-    max-width:76%;   
+max-width:76%;   
 border-radius: 10px;
 margin-top: 20px;
-/* padding: 15px; */
 }
 .card_name{
 background-color: rgba(0, 0, 0, 0.616);
-/* column-count: 3; */
-/* background-color: rgba(225, 255, 92, 0.493); */
 border-radius: 10px;
 width: 300px;
 margin-bottom: 30px;
@@ -47,20 +27,22 @@ border: 2px solid rgba(255, 215, 104, 0.788);
 
 }
 .columnas_name{
-    column-count: 3;
-    margin: auto;
-justify-content: center;
-padding: 50px;
-padding-left: 100px;
-/* padding-top: 30px;
-margin-bottom: 20px;
-width: 95%;  */
+columns: 4;
+display: grid;
+grid-template-columns: 25% 25% 25% 25%;
+grid-row-gap: 20px;
+grid-column-gap:2%;
+align-items: center;
+padding: 25px;
 }
 .title_name{
     margin: auto;
     margin-left: 8px;  
     text-align: center;
     color: wheat;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .text_name{
     margin: auto;

@@ -15,17 +15,17 @@ return(
             { 
                  name.map((c)=>( 
                     <div className="card_name">
-                 <Link to="/detail"><img src={c.img} alt="" className="imagen_name" onClick={()=>dispatch(detailRece(c.id))} /></Link>  
+                 <Link to="/detail"><img src={c.image} alt="" className="imagen_name" onClick={()=>dispatch(detailRece(c.id))} /></Link>  
                 <h3 className="title_name">{c.title}</h3>
                 <p className="text_name">{c.diets && c.diets.map((x)=>(x + " "))}</p>
                     </div>
                    
                  )) 
             }
-            <div>
+        </div>
+            <div className="botones_order">
                 <Link to="/home"><button className="sig" onClick={()=>dispatch(cargar())}>Home</button></Link>
             </div>
-        </div>
     </div>
 )
 }
