@@ -42,6 +42,7 @@ return function(dispatch){
     // let todos= getState().todos
     axios.get(`/recipes/${id}`)
     .then(response=>{
+        console.log(response.data[0], 'DATA')
         dispatch({
             type: DETAIL_RECE,
             payload: response.data[0]
@@ -103,23 +104,24 @@ export function getName(name){
 return function(dispatch){
 axios.get(`/recipes?name=${name}`)    
     .then(response=>{
-      let nombres= []
+    //   let nombres= []
       let rta= response.data
-      if(rta.length > 9)
-        for(let i= 0; i< 9; i++){
-            console.log(rta[i])
-         nombres.push(rta[i])
-        }else{
-            if(rta.length< 9){
-             for(let m=0; m< rta.length; m++){
-                 nombres.push(rta[m])
-             }
-            }
-        }
+    //   if(rta.length > 9)
+    //     for(let i= 0; i< 9; i++){
+    //         console.log(rta[i])
+    //      nombres.push(rta[i])
+    //     }else{
+    //         if(rta.length< 9){
+    //          for(let m=0; m< rta.length; m++){
+    //              nombres.push(rta[m])
+    //          }
+    //         }
+    //     }
+    console.log(rta, 'RESPUESTA')
     
          dispatch({
              type: GET_NAME,
-             payload: nombres
+             payload: rta
          })
      })
    
